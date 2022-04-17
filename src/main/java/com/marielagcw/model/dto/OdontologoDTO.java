@@ -32,4 +32,11 @@ public class OdontologoDTO {
         this.id = id;
     }
 
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

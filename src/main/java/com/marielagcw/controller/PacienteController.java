@@ -2,6 +2,7 @@ package com.marielagcw.controller;
 
 import com.marielagcw.model.dto.PacienteDTO;
 import com.marielagcw.service.impl.PacienteService;
+import com.marielagcw.util.ControllerValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ public class PacienteController {
     // ATRIBUTOS
     @Autowired
     private PacienteService service;
+    @Autowired
+    private ControllerValidation validation;
     /* ---------------------------------------------------------------------*/
 
     /* ──────────────────────────
@@ -23,7 +26,7 @@ public class PacienteController {
     ────────────────────────── */
     @PostMapping
     public ResponseEntity<String> postPaciente(@RequestBody PacienteDTO pacienteDTO) {
-        if (bodyValidation(pacienteDTO)) {
+        if (validation.bodyValidation(pacienteDTO)) {
             service.save(pacienteDTO);
             return ResponseEntity.ok("El pacienteDTO se guardó con éxito");
         } else return ResponseEntity.badRequest().body("El pacienteDTO debe tener todos los campos completos");
@@ -44,7 +47,7 @@ public class PacienteController {
     ────────────────────────── */
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id) {
-        if (idValidation(id)) {
+        if (validation.idValidation(id)) {
             PacienteDTO pacienteResponse = service.findById(id);
             return ResponseEntity.ok(pacienteResponse);
         } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
@@ -56,7 +59,7 @@ public class PacienteController {
     ────────────────────────── */
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Integer id) {
-        if (idValidation(id)) {
+        if (validation.idValidation(id)) {
             service.deleteById(id);
             return ResponseEntity.ok().body("El paciente fue eliminado con éxito");
         } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
@@ -68,7 +71,7 @@ public class PacienteController {
      ────────────────────────── */
     @PutMapping(path = "/{id}")
     public ResponseEntity<String> putById(@PathVariable Integer id, @RequestBody PacienteDTO pacienteDTO) {
-        if (idValidation(id) && bodyValidation(pacienteDTO)) {
+        if (validation.idValidation(id) && validation.bodyValidation(pacienteDTO)) {
             pacienteDTO.setId(id);
             service.update(pacienteDTO);
             return ResponseEntity.ok().body("El paciente fue modificado con éxito");
@@ -76,20 +79,4 @@ public class PacienteController {
     }
     /* ---------------------------------------------------------------------*/
 
-    /* ──────────────────────────
-             VALIDACIONES
-    ────────────────────────── */
-    public boolean bodyValidation(PacienteDTO pacienteDTO) {
-        boolean b;
-        if (pacienteDTO.getApellido() != null && pacienteDTO.getNombre() != null && pacienteDTO.getDni() != null) {
-            b = true;
-        } else b = false;
-        return b;
-    }
-
-    public boolean idValidation(Integer id) {
-        if (id != null) {
-            return true;
-        } else return false;
-    }
 }
