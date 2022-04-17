@@ -1,5 +1,8 @@
 package com.marielagcw.util;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ControllerValidation<T> {
 
     public boolean bodyValidation(T t) {
