@@ -2,7 +2,6 @@ com\marielagcw\controller\PacienteController.class
 com\marielagcw\util\controller\ControllerValidationBodyPaciente.class
 com\marielagcw\model\entity\Turno.class
 com\marielagcw\repository\IPacienteRepository.class
-com\marielagcw\GlobalExceptionHandler.class
 com\marielagcw\repository\IOdontologoRepository.class
 com\marielagcw\util\IValidationBody.class
 com\marielagcw\model\entity\Domicilio.class

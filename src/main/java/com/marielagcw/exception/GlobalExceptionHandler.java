@@ -1,4 +1,4 @@
-package com.marielagcw;
+package com.marielagcw.exception;
 
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;

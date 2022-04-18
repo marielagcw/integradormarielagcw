@@ -12,6 +12,7 @@ public class TurnoDTO {
     private Paciente paciente;
     private Odontologo odontologo;
 
+    // GETTERS
     public Integer getId() {
         return id;
     }
@@ -28,8 +29,20 @@ public class TurnoDTO {
         return odontologo;
     }
 
+    // SETTERS
     public void setId(Integer id) {
         this.id = id;
     }
 
+    public void setFechaHora(LocalDateTime fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public void setOdontologo(Odontologo odontologo) {
+        this.odontologo = odontologo;
+    }
 }

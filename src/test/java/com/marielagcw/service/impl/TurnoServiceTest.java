@@ -1,30 +1,37 @@
 package com.marielagcw.service.impl;
 
+import com.marielagcw.service.ITurnoService;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
-// PENDIENTES!
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class TurnoServiceTest {
 
+    @Autowired
+    ITurnoService turnoService;
+
     @Test
-    void save() {
+    void _1_testGuardarTurno() {
     }
 
     @Test
-    void findAll() {
+    void _2_testBuscarTodosLosTurnos() {
     }
 
     @Test
-    void findById() {
+    void _3_BuscarTurnoPorId() {
     }
 
     @Test
-    void deleteById() {
+    void _4_testEliminarTurno() {
     }
 
     @Test
-    void update() {
+    void _5_testModificarTurno() {
     }
 }
