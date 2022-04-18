@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/odontologos")
-//@CrossOrigin(origins = "http://localhost:3000"
+@CrossOrigin(origins = "*")
 public class OdontologoController {
 
     // ATRIBUTOS
