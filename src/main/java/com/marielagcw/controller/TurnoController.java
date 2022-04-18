@@ -2,7 +2,8 @@ package com.marielagcw.controller;
 
 import com.marielagcw.model.dto.TurnoDTO;
 import com.marielagcw.service.impl.TurnoService;
-import com.marielagcw.util.ControllerValidation;
+import com.marielagcw.util.controller.ControllerValidationBodyTurno;
+import com.marielagcw.util.controller.ControllerValidationId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,9 @@ public class TurnoController {
     @Autowired
     private TurnoService service;
     @Autowired
-    private ControllerValidation validation;
+    private ControllerValidationBodyTurno validation;
+    @Autowired
+    private ControllerValidationId idValidation;
     /* ---------------------------------------------------------------------*/
 
     /* ──────────────────────────
@@ -28,7 +31,7 @@ public class TurnoController {
         if (validation.bodyValidation(turnoDTO)) {
             service.save(turnoDTO);
             return ResponseEntity.ok().body("El turno fue guardado con éxito");
-        } else return ResponseEntity.badRequest().body("El turno ingresado no es válido");
+        } else return ResponseEntity.badRequest().body("Los datos ingresados son incompletos o incorrectos");
     }
     /* ---------------------------------------------------------------------*/
 
@@ -46,7 +49,7 @@ public class TurnoController {
     ────────────────────────── */
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id) {
-        if (validation.idValidation(id)) {
+        if (idValidation.idValidation(id)) {
             TurnoDTO turnoResponse = service.findById(id);
             return ResponseEntity.ok(turnoResponse);
         } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
@@ -58,7 +61,7 @@ public class TurnoController {
     ────────────────────────── */
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Integer id) {
-        if (validation.idValidation(id)) {
+        if (idValidation.idValidation(id)) {
             service.deleteById(id);
             return ResponseEntity.ok().body("El turno fue eliminado con éxito");
         } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
@@ -70,7 +73,7 @@ public class TurnoController {
     ────────────────────────── */
     @PutMapping(path = "/{id}")
     public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody TurnoDTO turnoDto) {
-        if (validation.bodyValidation(turnoDto) && validation.idValidation(id)) {
+        if (validation.bodyValidation(turnoDto) && idValidation.idValidation(id)) {
             turnoDto.setId(id);
             service.update(turnoDto);
             return ResponseEntity.ok().body("El turno se modificó con éxito");

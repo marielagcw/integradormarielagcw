@@ -1,11 +1,11 @@
 package com.marielagcw.service;
 
-
 import com.marielagcw.model.dto.OdontologoDTO;
-import com.marielagcw.model.entity.Odontologo;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public interface IOdontologoService {
 
    /* ──────────────

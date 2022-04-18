@@ -2,9 +2,9 @@ package com.marielagcw.controller;
 
 import com.marielagcw.model.dto.OdontologoDTO;
 import com.marielagcw.service.impl.OdontologoService;
-import com.marielagcw.util.ControllerValidation;
+import com.marielagcw.util.controller.ControllerValidationBodyOdontologo;
+import com.marielagcw.util.controller.ControllerValidationId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +19,9 @@ public class OdontologoController {
     @Autowired
     private OdontologoService service;
     @Autowired
-    private ControllerValidation validation;
+    private ControllerValidationBodyOdontologo validation;
+    @Autowired
+    private ControllerValidationId idValidation;
     /* ---------------------------------------------------------------------*/
 
     /* ──────────────────────────
@@ -30,7 +32,7 @@ public class OdontologoController {
         if (validation.bodyValidation(odontologoDTO)) {
             service.save(odontologoDTO);
             return ResponseEntity.ok().body("El odontólogo fue guardado con éxito");
-        } else return ResponseEntity.badRequest().body("El odontólogo no pudo ser guardado");
+        } else return ResponseEntity.badRequest().body("El odontólogo no pudo ser guardado porque los datos están incompletos");
     }
     /* ---------------------------------------------------------------------*/
 
@@ -48,10 +50,10 @@ public class OdontologoController {
     ────────────────────────── */
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id) {
-        if (validation.idValidation(id)) {
+        if (idValidation.idValidation(id)) {
             OdontologoDTO odontologoResponse = service.findById(id);
             return ResponseEntity.ok(odontologoResponse);
-        } else return ResponseEntity.badRequest().body("El Id ingresado no es válido");
+        } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
     }
     /* ---------------------------------------------------------------------*/
 
@@ -60,7 +62,7 @@ public class OdontologoController {
     ────────────────────────── */
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Integer id) {
-        if (validation.idValidation(id)) {
+        if (idValidation.idValidation(id)) {
             service.deleteById(id);
             return ResponseEntity.ok().body("El odontólogo fue eliminado con éxito");
         } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
@@ -72,11 +74,11 @@ public class OdontologoController {
     ────────────────────────── */
     @PutMapping(path = "{id}")
     public ResponseEntity<?> putById(@PathVariable Integer id, @RequestBody OdontologoDTO odontologoDTO) {
-        if (validation.idValidation(id) && validation.bodyValidation(odontologoDTO)) {
+        if (idValidation.idValidation(id) && validation.bodyValidation(odontologoDTO)) {
             odontologoDTO.setId(id);
             service.update(odontologoDTO);
             return ResponseEntity.ok().body("El odontólogo fue modificado con éxito");
-        } else return ResponseEntity.badRequest().body("Los datos ingresados no son válidos");
+        } else return ResponseEntity.badRequest().body("El odontólogo no pudo ser modificado porque uno o más de los datos ingresados son incorrectos");
     }
     /* ---------------------------------------------------------------------*/
 

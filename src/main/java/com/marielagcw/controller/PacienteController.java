@@ -2,7 +2,8 @@ package com.marielagcw.controller;
 
 import com.marielagcw.model.dto.PacienteDTO;
 import com.marielagcw.service.impl.PacienteService;
-import com.marielagcw.util.ControllerValidation;
+import com.marielagcw.util.controller.ControllerValidationBodyPaciente;
+import com.marielagcw.util.controller.ControllerValidationId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,9 @@ public class PacienteController {
     @Autowired
     private PacienteService service;
     @Autowired
-    private ControllerValidation validation;
+    private ControllerValidationBodyPaciente validation;
+    @Autowired
+    private ControllerValidationId idValidation;
     /* ---------------------------------------------------------------------*/
 
     /* ──────────────────────────
@@ -47,7 +50,7 @@ public class PacienteController {
     ────────────────────────── */
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id) {
-        if (validation.idValidation(id)) {
+        if (idValidation.idValidation(id)) {
             PacienteDTO pacienteResponse = service.findById(id);
             return ResponseEntity.ok(pacienteResponse);
         } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
@@ -59,7 +62,7 @@ public class PacienteController {
     ────────────────────────── */
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Integer id) {
-        if (validation.idValidation(id)) {
+        if (idValidation.idValidation(id)) {
             service.deleteById(id);
             return ResponseEntity.ok().body("El paciente fue eliminado con éxito");
         } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
@@ -71,7 +74,7 @@ public class PacienteController {
      ────────────────────────── */
     @PutMapping(path = "/{id}")
     public ResponseEntity<String> putById(@PathVariable Integer id, @RequestBody PacienteDTO pacienteDTO) {
-        if (validation.idValidation(id) && validation.bodyValidation(pacienteDTO)) {
+        if (idValidation.idValidation(id) && validation.bodyValidation(pacienteDTO)) {
             pacienteDTO.setId(id);
             service.update(pacienteDTO);
             return ResponseEntity.ok().body("El paciente fue modificado con éxito");

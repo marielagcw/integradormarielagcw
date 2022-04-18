@@ -46,4 +46,8 @@ public class PacienteDTO {
     public void setFechaDeIngreso(LocalDate fechaDeIngreso) {
         this.fechaDeIngreso = fechaDeIngreso;
     }
+
+    public void setDomicilio(Domicilio domicilio) {
+        this.domicilio = domicilio;
+    }
 }

@@ -1,8 +1,10 @@
 com\marielagcw\controller\PacienteController.class
+com\marielagcw\util\controller\ControllerValidationBodyPaciente.class
 com\marielagcw\model\entity\Turno.class
 com\marielagcw\repository\IPacienteRepository.class
 com\marielagcw\GlobalExceptionHandler.class
 com\marielagcw\repository\IOdontologoRepository.class
+com\marielagcw\util\IValidationBody.class
 com\marielagcw\model\entity\Domicilio.class
 com\marielagcw\service\IPacienteService.class
 com\marielagcw\model\entity\Odontologo.class
@@ -16,7 +18,10 @@ com\marielagcw\service\impl\PacienteService.class
 com\marielagcw\model\entity\Paciente.class
 com\marielagcw\service\impl\TurnoService.class
 com\marielagcw\model\dto\DomicilioDTO.class
+com\marielagcw\util\controller\ControllerValidationBodyOdontologo.class
+com\marielagcw\util\controller\ControllerValidationId.class
 com\marielagcw\model\dto\TurnoDTO.class
+com\marielagcw\util\controller\ControllerValidationBodyTurno.class
 com\marielagcw\repository\ITurnoRepository.class
 com\marielagcw\DemoApplication.class
 com\marielagcw\model\dto\PacienteDTO.class

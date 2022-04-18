@@ -2,8 +2,11 @@ package com.marielagcw.service;
 
 
 import com.marielagcw.model.dto.TurnoDTO;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public interface ITurnoService {
 
     /* ──────────────

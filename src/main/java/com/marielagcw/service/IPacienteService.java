@@ -2,9 +2,11 @@ package com.marielagcw.service;
 
 
 import com.marielagcw.model.dto.PacienteDTO;
-import com.marielagcw.model.entity.Paciente;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public interface IPacienteService {
 
     /* ──────────────

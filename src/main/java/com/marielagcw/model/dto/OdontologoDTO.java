@@ -39,4 +39,8 @@ public class OdontologoDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void setNumeroMatricula(Integer numeroMatricula) {
+        this.numeroMatricula = numeroMatricula;
+    }
 }
