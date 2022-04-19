@@ -54,7 +54,7 @@ public class TurnoController {
     /* ──────────────────────────
      BUSCAR POR ID / GET BY ID
     ────────────────────────── */
-    @GetMapping(path = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id) {
         if (validationId.validate(id)) {
             TurnoDTO turnoResponse = service.findById(id);
@@ -66,7 +66,7 @@ public class TurnoController {
     /* ──────────────────────────
        ELIMINAR / DELETE BY ID
     ────────────────────────── */
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Integer id) {
         if (validationId.validate(id)) {
             service.deleteById(id);
@@ -78,7 +78,7 @@ public class TurnoController {
     /* ──────────────────────────
        MODIFICAR POR ID / PUT
     ────────────────────────── */
-    @PutMapping(path = "/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody TurnoDTO turnoDto) {
         if (validationBody.validate(turnoDto) && validationId.validate(id)) {
             turnoDto.setId(id);

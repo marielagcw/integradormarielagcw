@@ -48,7 +48,7 @@ public class PacienteController {
     /* ──────────────────────────
       BUSCAR POR ID / GET BY ID
     ────────────────────────── */
-    @GetMapping(path = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id) {
         if (validationId.validate(id)) {
             PacienteDTO pacienteResponse = service.findById(id);
@@ -60,7 +60,7 @@ public class PacienteController {
     /* ──────────────────────────
        ELIMINAR / DELETE BY ID
     ────────────────────────── */
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Integer id) {
         if (validationId.validate(id)) {
             service.deleteById(id);
@@ -72,7 +72,7 @@ public class PacienteController {
     /* ──────────────────────────
         MODIFICAR / PUT BY ID
      ────────────────────────── */
-    @PutMapping(path = "/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> putById(@PathVariable Integer id, @RequestBody PacienteDTO pacienteDTO) {
         if (validationId.validate(id) && validationBody.validate(pacienteDTO)) {
             pacienteDTO.setId(id);

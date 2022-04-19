@@ -17,5 +17,5 @@ public class NotFoundIdException {
         logger.error(exception.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El ID no fue encontrado");
     }
-
 }
+

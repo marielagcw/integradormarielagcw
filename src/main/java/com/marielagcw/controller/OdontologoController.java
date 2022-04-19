@@ -48,7 +48,7 @@ public class OdontologoController {
     /* ──────────────────────────
       BUSCAR POR ID / GET BY ID
     ────────────────────────── */
-    @GetMapping(path = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id) {
         if (validateId.validate(id)) {
             OdontologoDTO odontologoResponse = service.findById(id);
@@ -60,7 +60,7 @@ public class OdontologoController {
     /* ──────────────────────────
     ELIMINAR POR ID / DELETE BY ID
     ────────────────────────── */
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Integer id) {
         if (validateId.validate(id)) {
             service.deleteById(id);
@@ -72,7 +72,7 @@ public class OdontologoController {
     /* ──────────────────────────
       MODIFICAR POR ID / PUT BY ID
     ────────────────────────── */
-    @PutMapping(path = "{id}")
+    @PutMapping("{id}")
     public ResponseEntity<?> putById(@PathVariable Integer id, @RequestBody OdontologoDTO odontologoDTO) {
         if (validateId.validate(id) && validateBody.validate(odontologoDTO)) {
             odontologoDTO.setId(id);
