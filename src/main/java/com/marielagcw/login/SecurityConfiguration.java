@@ -26,9 +26,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/user/**").hasAnyAuthority(AppUsuarioRoles.ROLE_USER.name())
                 .antMatchers("/admin/**").hasAnyAuthority(AppUsuarioRoles.ROLE_ADMIN.name())
-                .anyRequest()
-                .authenticated().and()
-                .formLogin();
+                .anyRequest().authenticated()
+                .and().formLogin().permitAll()
+                .and().httpBasic()
+                .and().logout().permitAll()
+                .and().exceptionHandling().accessDeniedPage("/403");
     }
 
     @Override
