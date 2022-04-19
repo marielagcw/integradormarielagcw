@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class NotFoundIdException {
 
     private static final Logger logger = Logger.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> todosErrores(Exception exception, WebRequest request) {
+    public ResponseEntity<String> notFoundIdError(Exception exception, WebRequest request) {
         logger.error(exception.getMessage());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("La operación no pudo ser procesada");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El ID no fue encontrado");
     }
+
 }

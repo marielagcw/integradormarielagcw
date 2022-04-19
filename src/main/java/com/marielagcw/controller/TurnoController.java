@@ -1,7 +1,9 @@
 package com.marielagcw.controller;
 
+import com.marielagcw.exception.BadRequestException;
 import com.marielagcw.model.dto.TurnoDTO;
 import com.marielagcw.service.impl.TurnoService;
+import com.marielagcw.util.IValidation;
 import com.marielagcw.util.controller.ControllerValidationBodyTurno;
 import com.marielagcw.util.controller.ControllerValidationId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +20,9 @@ public class TurnoController {
     @Autowired
     private TurnoService service;
     @Autowired
-    private ControllerValidationBodyTurno validation;
+    private IValidation<TurnoDTO> validationBody;
     @Autowired
-    private ControllerValidationId idValidation;
+    private IValidation<Integer> validationId;
     /* ---------------------------------------------------------------------*/
 
     /* ──────────────────────────
@@ -28,8 +30,13 @@ public class TurnoController {
     ────────────────────────── */
     @PostMapping
     public ResponseEntity<String> postTurno(@RequestBody TurnoDTO turnoDTO) {
-        if (validation.bodyValidation(turnoDTO)) {
-            service.save(turnoDTO);
+        if (validationBody.validate(turnoDTO)) {
+            try {
+                service.save(turnoDTO);
+            } catch (BadRequestException e) {
+                e.printStackTrace();
+                return ResponseEntity.badRequest().body(e.getMessage());
+            }
             return ResponseEntity.ok().body("El turno fue guardado con éxito");
         } else return ResponseEntity.badRequest().body("Los datos ingresados son incompletos o incorrectos");
     }
@@ -49,7 +56,7 @@ public class TurnoController {
     ────────────────────────── */
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getById(@PathVariable Integer id) {
-        if (idValidation.idValidation(id)) {
+        if (validationId.validate(id)) {
             TurnoDTO turnoResponse = service.findById(id);
             return ResponseEntity.ok(turnoResponse);
         } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
@@ -61,7 +68,7 @@ public class TurnoController {
     ────────────────────────── */
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> deleteById(@PathVariable Integer id) {
-        if (idValidation.idValidation(id)) {
+        if (validationId.validate(id)) {
             service.deleteById(id);
             return ResponseEntity.ok().body("El turno fue eliminado con éxito");
         } else return ResponseEntity.badRequest().body("El ID ingresado no es válido");
@@ -73,7 +80,7 @@ public class TurnoController {
     ────────────────────────── */
     @PutMapping(path = "/{id}")
     public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody TurnoDTO turnoDto) {
-        if (validation.bodyValidation(turnoDto) && idValidation.idValidation(id)) {
+        if (validationBody.validate(turnoDto) && validationId.validate(id)) {
             turnoDto.setId(id);
             service.update(turnoDto);
             return ResponseEntity.ok().body("El turno se modificó con éxito");

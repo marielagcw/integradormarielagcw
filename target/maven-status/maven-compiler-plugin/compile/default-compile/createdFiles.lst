@@ -1,10 +1,11 @@
 com\marielagcw\controller\PacienteController.class
 com\marielagcw\util\controller\ControllerValidationBodyPaciente.class
 com\marielagcw\model\entity\Turno.class
+com\marielagcw\exception\BadRequestException.class
 com\marielagcw\repository\IPacienteRepository.class
 com\marielagcw\repository\IOdontologoRepository.class
-com\marielagcw\util\IValidationBody.class
 com\marielagcw\model\entity\Domicilio.class
+com\marielagcw\util\IValidation.class
 com\marielagcw\service\IPacienteService.class
 com\marielagcw\model\entity\Odontologo.class
 com\marielagcw\service\IOdontologoService.class
@@ -15,6 +16,7 @@ com\marielagcw\model\dto\OdontologoDTO.class
 com\marielagcw\service\ITurnoService.class
 com\marielagcw\service\impl\PacienteService.class
 com\marielagcw\model\entity\Paciente.class
+com\marielagcw\exception\NotFoundIdException.class
 com\marielagcw\service\impl\TurnoService.class
 com\marielagcw\model\dto\DomicilioDTO.class
 com\marielagcw\util\controller\ControllerValidationBodyOdontologo.class

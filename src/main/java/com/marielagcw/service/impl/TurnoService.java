@@ -1,6 +1,7 @@
 package com.marielagcw.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.marielagcw.exception.BadRequestException;
 import com.marielagcw.model.dto.TurnoDTO;
 import com.marielagcw.model.entity.Turno;
 import com.marielagcw.repository.ITurnoRepository;
@@ -24,9 +25,16 @@ public class TurnoService implements ITurnoService {
    ────────────── */
 
     // GUARDAR
-    public void save(TurnoDTO turnoDto) {
+    public void save(TurnoDTO turnoDto) throws BadRequestException {
         Turno turnoAGuardar = mapper.convertValue(turnoDto, Turno.class);
+        List<Turno> listadoDeTurnosGuardados = turnoRepository.findAll();
+        for (Turno turno : listadoDeTurnosGuardados) {
+            if (turnoDto.getFechaHora().equals(turno.getFechaHora())) {
+                throw new BadRequestException("La fecha que intenta ingresar ya fue ocupada");
+            }
+        }
         turnoRepository.save(turnoAGuardar);
+
     }
     /* ----------------------------------------------------------------------------- */
 
