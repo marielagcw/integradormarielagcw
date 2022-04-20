@@ -79,7 +79,7 @@ public class OdontologoController {
             service.update(odontologoDTO);
             return ResponseEntity.ok().body("El odontólogo fue modificado con éxito");
         } else
-            return ResponseEntity.badRequest().body("El odontólogo no pudo ser modificado porque uno o más de los datos ingresados son incorrectos");
+            return ResponseEntity.badRequest().body("El odontólogo no pudo ser modificado porque los datos ingresados son incorrectos");
     }
     /* ---------------------------------------------------------------------*/
 

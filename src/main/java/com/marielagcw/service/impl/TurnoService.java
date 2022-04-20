@@ -20,6 +20,10 @@ public class TurnoService implements ITurnoService {
     ITurnoRepository turnoRepository;
     @Autowired
     ObjectMapper mapper;
+    @Autowired
+    OdontologoService odontologoService;
+    @Autowired
+    PacienteService pacienteService;
 
    /* ──────────────
      MÉTODOS CRUD
@@ -27,6 +31,8 @@ public class TurnoService implements ITurnoService {
 
     // GUARDAR
     public TurnoDTO save(TurnoDTO turnoDto) {
+        odontologoService.findById(turnoDto.getOdontologo().getId());
+        pacienteService.findById(turnoDto.getPaciente().getId());
         Turno turnoAGuardar = mapper.convertValue(turnoDto, Turno.class);
         List<Turno> listadoDeTurnosGuardados = turnoRepository.findAll();
         for (Turno turno : listadoDeTurnosGuardados) {

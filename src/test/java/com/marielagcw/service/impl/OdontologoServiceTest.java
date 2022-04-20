@@ -1,11 +1,13 @@
 package com.marielagcw.service.impl;
 
+import com.marielagcw.exception.NotFoundIdException;
 import com.marielagcw.model.dto.OdontologoDTO;
 import com.marielagcw.service.IOdontologoService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -39,10 +41,11 @@ class OdontologoServiceTest {
         OdontologoDTO odontologoDTO2 = new OdontologoDTO();
         odontologoDTO2.setNombre("OdontologoNombre2");
         odontologoDTO2.setApellido("OdontologoApellido2");
-        odontologoService.save(odontologoDTO2);
+        odontologoDTO2 = odontologoService.save(odontologoDTO2);
+
 
         // CUANDO
-        OdontologoDTO resultadoEsperado2 = odontologoService.findById(2);
+        OdontologoDTO resultadoEsperado2 = odontologoService.findById(odontologoDTO2.getId());
 
         // ENTONCES
         Assertions.assertTrue(resultadoEsperado2 != null);
@@ -76,14 +79,14 @@ class OdontologoServiceTest {
         OdontologoDTO odontologoDTO5 = new OdontologoDTO();
         odontologoDTO5.setNombre("OdontologoNombre5");
         odontologoDTO5.setApellido("OdontologoApellido5");
-        odontologoService.save(odontologoDTO5);
+        odontologoDTO5 = odontologoService.save(odontologoDTO5);
+        Integer idEliminado = odontologoDTO5.getId();
 
         // CUANDO
-        odontologoService.deleteById(1);
-        OdontologoDTO resultadoEsperado3 = odontologoService.findById(1);
+        odontologoService.deleteById(odontologoDTO5.getId());
 
         // ENTONCES
-        Assertions.assertTrue(resultadoEsperado3 == null);
+        Assertions.assertThrows(NotFoundIdException.class, ()-> odontologoService.findById(idEliminado));
     }
 
     @Test
@@ -92,15 +95,16 @@ class OdontologoServiceTest {
         OdontologoDTO odontologoDTO6 = new OdontologoDTO();
         odontologoDTO6.setNombre("OdontologoNombre6");
         odontologoDTO6.setApellido("OdontologoApellido6");
-        odontologoService.save(odontologoDTO6);
+        odontologoDTO6 = odontologoService.save(odontologoDTO6);
+        odontologoDTO6.setApellido("OtroApellido");
 
 
         // CUANDO
-        //odontologoService.update(odontologoModificado);
-        OdontologoDTO resultadoEsperado4 = odontologoService.findById(2);
+        odontologoService.update(odontologoDTO6);
+        OdontologoDTO resultadoEsperado4 = odontologoService.findById(odontologoDTO6.getId());
 
         // ENTONCES
-        //Assertions.assertTrue(resultadoEsperado4.getApellido().equals(odontologoModificado.getApellido()));
+        Assertions.assertTrue(resultadoEsperado4.getApellido().equals(odontologoDTO6.getApellido()));
     }
 
 }

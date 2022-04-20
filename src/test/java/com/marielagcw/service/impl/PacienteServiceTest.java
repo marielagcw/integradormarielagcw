@@ -1,5 +1,6 @@
 package com.marielagcw.service.impl;
 
+import com.marielagcw.exception.NotFoundIdException;
 import com.marielagcw.model.dto.PacienteDTO;
 import com.marielagcw.service.IPacienteService;
 import org.junit.jupiter.api.Assertions;
@@ -26,8 +27,8 @@ class PacienteServiceTest {
         pacienteDTO.setApellido("PacienteApellido1");
 
         // CUANDO
-        pacienteService.save(pacienteDTO);
-        PacienteDTO resultadoEsperado1 = pacienteService.findById(1);
+       pacienteDTO =  pacienteService.save(pacienteDTO);
+        PacienteDTO resultadoEsperado1 = pacienteService.findById(pacienteDTO.getId());
 
         // ENTONCES
         Assertions.assertTrue(resultadoEsperado1 != null);
@@ -39,10 +40,10 @@ class PacienteServiceTest {
         PacienteDTO pacienteDTO2 = new PacienteDTO();
         pacienteDTO2.setNombre("PacienteNombre2");
         pacienteDTO2.setApellido("PacienteApellido2");
-        pacienteService.save(pacienteDTO2);
+       pacienteDTO2 = pacienteService.save(pacienteDTO2);
 
         // CUANDO
-        PacienteDTO resultadoEsperado2 = pacienteService.findById(2);
+        PacienteDTO resultadoEsperado2 = pacienteService.findById(pacienteDTO2.getId());
         // ENTONCES
         Assertions.assertTrue(resultadoEsperado2 != null);
     }
@@ -74,14 +75,14 @@ class PacienteServiceTest {
         PacienteDTO pacienteDTO5 = new PacienteDTO();
         pacienteDTO5.setNombre("PacienteNombre5");
         pacienteDTO5.setApellido("PacienteApellido5");
-        pacienteService.save(pacienteDTO5);
+        pacienteDTO5 = pacienteService.save(pacienteDTO5);
+        Integer idEliminado = pacienteDTO5.getId();
 
         // CUANDO
-        pacienteService.deleteById(1);
-        PacienteDTO resultadoEsperado3 = pacienteService.findById(1);
+        pacienteService.deleteById(pacienteDTO5.getId());
 
         // ENTONCES
-        Assertions.assertTrue(resultadoEsperado3 == null);
+        Assertions.assertThrows(NotFoundIdException.class, ()-> pacienteService.findById(idEliminado));
     }
 
     @Test
@@ -90,18 +91,15 @@ class PacienteServiceTest {
         PacienteDTO pacienteDTO6 = new PacienteDTO();
         pacienteDTO6.setNombre("PacienteNombre6");
         pacienteDTO6.setApellido("PacienteApellido6");
-        pacienteService.save(pacienteDTO6);
-        PacienteDTO pacienteModificado = new PacienteDTO();
-        pacienteModificado.setId(2);
-        pacienteModificado.setNombre("PacienteModificadoNombre");
-        pacienteModificado.setApellido("PacienteModificadoApellido");
+        pacienteDTO6 = pacienteService.save(pacienteDTO6);
+        pacienteDTO6.setApellido("OtroApellido");
 
         // CUANDO
-        pacienteService.update(pacienteModificado);
-        PacienteDTO resultadoEsperado4 = pacienteService.findById(2);
+        pacienteService.update(pacienteDTO6);
+        PacienteDTO resultadoEsperado4 = pacienteService.findById(pacienteDTO6.getId());
 
         // ENTONCES
-        Assertions.assertTrue(resultadoEsperado4.getApellido().equals(pacienteModificado.getApellido()));
+        Assertions.assertTrue(resultadoEsperado4.getApellido().equals(pacienteDTO6.getApellido()));
     }
 
 }
