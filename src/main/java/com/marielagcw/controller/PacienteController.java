@@ -3,7 +3,6 @@ package com.marielagcw.controller;
 import com.marielagcw.model.dto.PacienteDTO;
 import com.marielagcw.service.impl.PacienteService;
 import com.marielagcw.util.IValidation;
-import com.marielagcw.util.controller.ControllerValidationId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +31,7 @@ public class PacienteController {
         if (validationBody.validate(pacienteDTO)) {
             service.save(pacienteDTO);
             return ResponseEntity.ok("El pacienteDTO se guardó con éxito");
-        } else return ResponseEntity.badRequest().body("El pacienteDTO debe tener todos los campos completos");
+        } else return ResponseEntity.badRequest().body("El paciente debe tener todos los campos completos");
     }
     /* ---------------------------------------------------------------------*/
 

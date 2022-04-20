@@ -1,7 +1,5 @@
 package com.marielagcw.service;
 
-
-import com.marielagcw.exception.BadRequestException;
 import com.marielagcw.model.dto.TurnoDTO;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +13,7 @@ public interface ITurnoService {
      ────────────── */
 
     // GUARDAR
-    void save(TurnoDTO turnoDTO) throws BadRequestException;
+    TurnoDTO save(TurnoDTO turnoDTO);
 
     // BUSCAR TODOS
     List<TurnoDTO> findAll();

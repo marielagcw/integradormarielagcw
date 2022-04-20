@@ -1,7 +1,8 @@
 package com.marielagcw.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.marielagcw.exception.BadRequestException;
+import com.marielagcw.exception.BadRequestExceptionService;
+import com.marielagcw.exception.NotFoundIdException;
 import com.marielagcw.model.dto.TurnoDTO;
 import com.marielagcw.model.entity.Turno;
 import com.marielagcw.repository.ITurnoRepository;
@@ -25,23 +26,23 @@ public class TurnoService implements ITurnoService {
    ────────────── */
 
     // GUARDAR
-    public void save(TurnoDTO turnoDto) throws BadRequestException {
+    public TurnoDTO save(TurnoDTO turnoDto) {
         Turno turnoAGuardar = mapper.convertValue(turnoDto, Turno.class);
         List<Turno> listadoDeTurnosGuardados = turnoRepository.findAll();
         for (Turno turno : listadoDeTurnosGuardados) {
             if (turnoDto.getFechaHora().equals(turno.getFechaHora())) {
-                throw new BadRequestException("La fecha que intenta ingresar ya fue ocupada");
+                throw new BadRequestExceptionService("La fecha que intenta ingresar ya fue ocupada");
             }
         }
         turnoRepository.save(turnoAGuardar);
-
+        return mapper.convertValue(turnoAGuardar, TurnoDTO.class);
     }
     /* ----------------------------------------------------------------------------- */
 
     // BUSCAR TODOS
     public List<TurnoDTO> findAll() {
         List<TurnoDTO> listaTurnosDto = new ArrayList<>();
-        List<Turno> listaTurnos = turnoRepository.findAll(); // findAll del JPA
+        List<Turno> listaTurnos = turnoRepository.findAll();
         for (Turno turno : listaTurnos) {
             listaTurnosDto.add(mapper.convertValue(turno, TurnoDTO.class));
         }
@@ -51,13 +52,14 @@ public class TurnoService implements ITurnoService {
 
     // BUSCAR POR ID
     public TurnoDTO findById(Integer id) {
-        TurnoDTO turnoEncontrado = mapper.convertValue(turnoRepository.findById(id), TurnoDTO.class);
+        TurnoDTO turnoEncontrado = mapper.convertValue(turnoRepository.findById(id).orElseThrow(() -> new NotFoundIdException("El Turno con ID " + id + " no fue encontrado")), TurnoDTO.class);
         return turnoEncontrado;
     }
     /* ----------------------------------------------------------------------------- */
 
     // ELIMINAR POR ID
     public void deleteById(Integer id) {
+        turnoRepository.findById(id).orElseThrow(() -> new NotFoundIdException("El Turno con ID " + id + " no fue encontrado y no pudo eliminarse"));
         turnoRepository.deleteById(id);
     }
     /* ----------------------------------------------------------------------------- */

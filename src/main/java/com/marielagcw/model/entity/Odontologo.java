@@ -46,4 +46,5 @@ public class Odontologo {
     public void setId(Integer id) {
         this.id = id;
     }
+
 }

@@ -1,7 +1,6 @@
 com\marielagcw\controller\PacienteController.class
 com\marielagcw\util\controller\ControllerValidationBodyPaciente.class
 com\marielagcw\model\entity\Turno.class
-com\marielagcw\exception\BadRequestException.class
 com\marielagcw\repository\IPacienteRepository.class
 com\marielagcw\login\IUserRepository.class
 com\marielagcw\login\AppUserService.class
@@ -28,6 +27,7 @@ com\marielagcw\model\dto\DomicilioDTO.class
 com\marielagcw\util\controller\ControllerValidationBodyOdontologo.class
 com\marielagcw\util\controller\ControllerValidationId.class
 com\marielagcw\model\dto\TurnoDTO.class
+com\marielagcw\exception\BadRequestExceptionService.class
 com\marielagcw\util\controller\ControllerValidationBodyTurno.class
 com\marielagcw\repository\ITurnoRepository.class
 com\marielagcw\DemoApplication.class

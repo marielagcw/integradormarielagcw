@@ -1,7 +1,5 @@
 package com.marielagcw.model.dto;
 
-import com.marielagcw.model.entity.Odontologo;
-import com.marielagcw.model.entity.Paciente;
 import java.time.LocalDateTime;
 
 public class TurnoDTO {
@@ -9,10 +7,11 @@ public class TurnoDTO {
     // ATRIBUTOS
     private Integer id;
     private LocalDateTime fechaHora;
-    private Paciente paciente;
-    private Odontologo odontologo;
+    private PacienteDTO paciente;
+    private OdontologoDTO odontologo;
 
     // GETTERS
+
     public Integer getId() {
         return id;
     }
@@ -21,15 +20,16 @@ public class TurnoDTO {
         return fechaHora;
     }
 
-    public Paciente getPaciente() {
+    public PacienteDTO getPaciente() {
         return paciente;
     }
 
-    public Odontologo getOdontologo() {
+    public OdontologoDTO getOdontologo() {
         return odontologo;
     }
 
     // SETTERS
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -38,11 +38,11 @@ public class TurnoDTO {
         this.fechaHora = fechaHora;
     }
 
-    public void setPaciente(Paciente paciente) {
+    public void setPaciente(PacienteDTO paciente) {
         this.paciente = paciente;
     }
 
-    public void setOdontologo(Odontologo odontologo) {
+    public void setOdontologo(OdontologoDTO odontologo) {
         this.odontologo = odontologo;
     }
 }

@@ -1,12 +1,14 @@
 package com.marielagcw.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.marielagcw.exception.NotFoundIdException;
 import com.marielagcw.model.dto.PacienteDTO;
 import com.marielagcw.model.entity.Paciente;
 import com.marielagcw.repository.IPacienteRepository;
 import com.marielagcw.service.IPacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,9 +26,10 @@ public class PacienteService implements IPacienteService {
    ────────────── */
 
     // GUARDAR
-    public void save(PacienteDTO pacienteDTO) {
+    public PacienteDTO save(PacienteDTO pacienteDTO) {
         Paciente pacienteAGuardar = mapper.convertValue(pacienteDTO, Paciente.class);
         pacienteRepository.save(pacienteAGuardar);
+        return mapper.convertValue(pacienteAGuardar, PacienteDTO.class);
     }
     /* ----------------------------------------------------------------------------- */
 
@@ -42,14 +45,15 @@ public class PacienteService implements IPacienteService {
     /* ----------------------------------------------------------------------------- */
 
     // BUSCAR POR ID
-    public PacienteDTO findById(Integer id) {
-        PacienteDTO pacienteEncontrado = mapper.convertValue(pacienteRepository.findById(id), PacienteDTO.class);
+    public PacienteDTO findById(Integer id){
+        PacienteDTO pacienteEncontrado = mapper.convertValue(pacienteRepository.findById(id).orElseThrow(() -> new NotFoundIdException("El Paciente con ID " + id + " no fue encontrado")), PacienteDTO.class);
         return pacienteEncontrado;
     }
     /* ----------------------------------------------------------------------------- */
 
     // ELIMINAR POR ID
     public void deleteById(Integer id) {
+        pacienteRepository.findById(id).orElseThrow(() -> new NotFoundIdException("El Paciente con ID " + id + " no fue encontrado y no pudo eliminarse"));
         pacienteRepository.deleteById(id);
     }
     /* ----------------------------------------------------------------------------- */

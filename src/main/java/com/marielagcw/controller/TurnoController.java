@@ -1,11 +1,9 @@
 package com.marielagcw.controller;
 
-import com.marielagcw.exception.BadRequestException;
+import com.marielagcw.exception.BadRequestExceptionService;
 import com.marielagcw.model.dto.TurnoDTO;
 import com.marielagcw.service.impl.TurnoService;
 import com.marielagcw.util.IValidation;
-import com.marielagcw.util.controller.ControllerValidationBodyTurno;
-import com.marielagcw.util.controller.ControllerValidationId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +31,7 @@ public class TurnoController {
         if (validationBody.validate(turnoDTO)) {
             try {
                 service.save(turnoDTO);
-            } catch (BadRequestException e) {
+            } catch (BadRequestExceptionService e) {
                 e.printStackTrace();
                 return ResponseEntity.badRequest().body(e.getMessage());
             }

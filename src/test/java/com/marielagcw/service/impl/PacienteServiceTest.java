@@ -34,7 +34,7 @@ class PacienteServiceTest {
     }
 
     @Test
-    void _2_testBuscarPaciente() {
+    void _2_testBuscarPacientePorId() {
         // DADOS
         PacienteDTO pacienteDTO2 = new PacienteDTO();
         pacienteDTO2.setNombre("PacienteNombre2");

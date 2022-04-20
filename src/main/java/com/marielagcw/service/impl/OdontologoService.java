@@ -1,17 +1,19 @@
 package com.marielagcw.service.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.marielagcw.exception.NotFoundIdException;
 import com.marielagcw.model.dto.OdontologoDTO;
 import com.marielagcw.model.entity.Odontologo;
 import com.marielagcw.repository.IOdontologoRepository;
 import com.marielagcw.service.IOdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class OdontologoService implements IOdontologoService{
+public class OdontologoService implements IOdontologoService {
 
     @Autowired
     IOdontologoRepository odontologoRepository;
@@ -24,9 +26,10 @@ public class OdontologoService implements IOdontologoService{
    ────────────── */
 
     // GUARDAR
-    public void save(OdontologoDTO odontologoDTO) {
+    public OdontologoDTO save(OdontologoDTO odontologoDTO) {
         Odontologo odontologoAGuardar = mapper.convertValue(odontologoDTO, Odontologo.class);
         odontologoRepository.save(odontologoAGuardar);
+        return mapper.convertValue(odontologoAGuardar, OdontologoDTO.class);
     }
     /* ----------------------------------------------------------------------------- */
 
@@ -43,13 +46,13 @@ public class OdontologoService implements IOdontologoService{
 
     // BUSCAR POR ID
     public OdontologoDTO findById(Integer id) {
-        OdontologoDTO odontologoEncontrado = mapper.convertValue(odontologoRepository.findById(id), OdontologoDTO.class);
-       return odontologoEncontrado;
+        return mapper.convertValue(odontologoRepository.findById(id).orElseThrow(() -> new NotFoundIdException("El Odontólogo con ID " + id + " no fue encontrado")), OdontologoDTO.class);
     }
     /* ----------------------------------------------------------------------------- */
 
     // ELIMINAR POR ID
     public void deleteById(Integer id) {
+        odontologoRepository.findById(id).orElseThrow(() -> new NotFoundIdException("El Odontólogo con ID " + id + " no fue encontrado y no pudo eliminarse"));
         odontologoRepository.deleteById(id);
     }
     /* ----------------------------------------------------------------------------- */
@@ -60,5 +63,5 @@ public class OdontologoService implements IOdontologoService{
         odontologoRepository.saveAndFlush(odontologoModificar);
     }
     /* ----------------------------------------------------------------------------- */
-    
+
 }

@@ -1,6 +1,5 @@
 package com.marielagcw.service;
 
-
 import com.marielagcw.model.dto.PacienteDTO;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ public interface IPacienteService {
      ────────────── */
 
     // GUARDAR
-    void save(PacienteDTO pacienteDTO);
+    PacienteDTO save(PacienteDTO pacienteDTO);
 
     // BUSCAR TODOS
     List<PacienteDTO> findAll();

@@ -1,8 +1,6 @@
 package com.marielagcw.util.controller;
 
-import com.marielagcw.exception.GlobalExceptionHandler;
 import com.marielagcw.util.IValidation;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 @Component
