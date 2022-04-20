@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+main.odontologos {
+  background-color: lightcyan;
+}
+main.pacientes{
+    background-color: lightpink;
+}
+main.turnos{
+    background-color: lightyellow;
+}
