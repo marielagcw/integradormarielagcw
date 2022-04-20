@@ -30,7 +30,7 @@ public class PacienteController {
     public ResponseEntity<String> postPaciente(@RequestBody PacienteDTO pacienteDTO) {
         if (validationBody.validate(pacienteDTO)) {
             service.save(pacienteDTO);
-            return ResponseEntity.ok("El pacienteDTO se guardó con éxito");
+            return ResponseEntity.ok("El paciente se guardó con éxito");
         } else return ResponseEntity.badRequest().body("El paciente debe tener todos los campos completos");
     }
     /* ---------------------------------------------------------------------*/

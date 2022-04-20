@@ -2,12 +2,12 @@ window.addEventListener("load", function () {
   (function () {
     const url = "/odontologos";
     const settings = {
-      method: "GET",
+      method: "GET"
     };
     fetch(url, settings)
       .then((response) => response.json())
-      .then((data) => {
-        for (dentist of data) {
+      .then((response) => {
+        for (dentist of response) {
           var table = document.getElementById("dentistTable");
           var dentistRow = table.insertRow();
           let tr_id = "tr_" + dentist.id;
@@ -56,7 +56,7 @@ window.addEventListener("load", function () {
       });
   })(function () {
     let pathname = window.location.pathname;
-    if (pathname == "dentistsList.html") {
+    if (pathname == "listadoOdontologos.html") {
       document.querySelector(".nav .nav-item a:last").addClass("active");
     }
   });

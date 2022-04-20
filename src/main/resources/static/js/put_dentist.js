@@ -18,7 +18,7 @@ window.addEventListener("load", function () {
       },
       body: JSON.stringify(formData),
     };
-    fetch(url, settings).then((response) => response.json());
+    fetch(url, settings).then((response) => alert("Guardado"));
   });
 });
 
@@ -33,9 +33,9 @@ function findBy(id) {
       document.querySelector("#div_dentist_updating").style.display = "block";
       let dentist = data;
       document.querySelector("#dentist").value = dentist.id;
-      document.querySelector("#matricula").value= dentist.numeroMatricula;
+      document.querySelector("#matricula").value = dentist.numeroMatricula;
       document.querySelector("#apellido").value = dentist.apellido;
-      document.querySelector("#nombre").value = dentist.nombre;      
+      document.querySelector("#nombre").value = dentist.nombre;
     })
     .catch((error) => {
       alert("Error: " + error);
