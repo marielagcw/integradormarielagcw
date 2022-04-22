@@ -1,5 +1,12 @@
 window.addEventListener("load", function () {
-  (function () {
+  (cargarListaOdontologos)(function () {
+    let pathname = window.location.pathname;
+    if (pathname == "listadoOdontologos.html") {
+      document.querySelector(".nav .nav-item a:last").addClass("active");
+    }
+  });
+});
+function cargarListaOdontologos() {
     const url = "/odontologos";
     const settings = {
       method: "GET"
@@ -13,8 +20,7 @@ window.addEventListener("load", function () {
           let tr_id = "tr_" + dentist.id;
           dentistRow.id = tr_id;
 
-          let deleteButton =
-            "<button" +
+          let deleteButton = "<button" +
             " id=" +
             '"' +
             "btn_delete_" +
@@ -26,8 +32,7 @@ window.addEventListener("load", function () {
             "&times" +
             "</button>";
 
-          let updateButton =
-            "<button" +
+          let updateButton = "<button" +
             " id=" +
             '"' +
             "btn_id_" +
@@ -54,10 +59,5 @@ window.addEventListener("load", function () {
             "</td>";
         }
       });
-  })(function () {
-    let pathname = window.location.pathname;
-    if (pathname == "listadoOdontologos.html") {
-      document.querySelector(".nav .nav-item a:last").addClass("active");
-    }
-  });
-});
+}
+

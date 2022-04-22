@@ -28,6 +28,7 @@ window.addEventListener("load", function () {
             icon: "success",
             title: "Genial!",
             text: "Los datos fueron guardado con éxito!",
+            confirmButtonText: "Yes, delete it!",
           });
         } else {
           Swal.fire({
@@ -36,6 +37,7 @@ window.addEventListener("load", function () {
             text: "Algo salió mal, intenta de nuevo",
           });
         }
+        cargarListaOdontologos();
       });
   });
 });

@@ -16,25 +16,24 @@ window.addEventListener("load", function () {
       headers: {
         "Content-Type": "application/json",
         mode: "no-cors",
-        referrerPolicy: 'no-referrer-when-downgrade'
+        referrerPolicy: "no-referrer-when-downgrade",
       },
       body: JSON.stringify(formData),
     };
-    fetch(url, settings)
-      .then(() => response.json())
-      .then((response) => {
-        response.status == 200
-          ? Swal.fire({
-              icon: "success",
-              title: "Genial!",
-              text: "Los datos fueron guardado con éxito!",
-            })
-          : Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Algo salió mal, intenta de nuevo",
-            });
-      });
+    fetch(url, settings).then((response) => {
+      response.status == 200
+        ? Swal.fire({
+            icon: "success",
+            title: "Genial!",
+            text: "Los datos fueron guardado con éxito!",
+          })
+        : Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo salió mal, intenta de nuevo",
+          });
+      cargarListaOdontologos();
+    });
   });
 });
 

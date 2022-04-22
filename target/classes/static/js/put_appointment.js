@@ -36,6 +36,7 @@ window.addEventListener("load", function () {
             text: "Algo salió mal, intenta de nuevo",
           });
         }
+        cargarListaOdontologos();
       });
   });
 });
