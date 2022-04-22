@@ -71,3 +71,5 @@ Aclaraciones (✿◡‿◡)
 
 
 * Está desarrollada la vista en HTML usando JavaScript y Bootstrap, con ventanas de alerta para los casos en que se guarda o elimina exitosamente o alertando por un error en caso de que esté fallando el pedido a la aplicación. Desde el front se aplicaron campos requeridos para evitar modificaciones en los campos ID, a modo de ejemplo, pero no era el objetivo principal hacer énfasis en las validaciones de los formularios normalizando los objetos, sino que el objetivo principal es mostrar el funcionamiento de la aplicación desde el backend.  
+
+* Repositorio GitHub → https://github.com/marielagcw/integradormarielagcw
