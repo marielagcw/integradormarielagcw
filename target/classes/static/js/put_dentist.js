@@ -15,10 +15,28 @@ window.addEventListener("load", function () {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        mode: "no-cors",
+        referrerPolicy: "no-referrer-when-downgrade",
       },
       body: JSON.stringify(formData),
     };
-    fetch(url, settings).then((response) => alert("Guardado"));
+    fetch(url, settings)
+      .then(() => response.json())
+      .then((response) => {
+        if (response.status == 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Genial!",
+            text: "Los datos fueron guardado con éxito!",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo salió mal, intenta de nuevo",
+          });
+        }
+      });
   });
 });
 
@@ -38,6 +56,10 @@ function findBy(id) {
       document.querySelector("#nombre").value = dentist.nombre;
     })
     .catch((error) => {
-      alert("Error: " + error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Algo salió mal, intenta de nuevo",
+      });
     });
 }

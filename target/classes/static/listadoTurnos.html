@@ -35,7 +35,7 @@
 
         <div id="div_appointment_table">
           <h1>turnos</h1>
-          <div class="row col-md-6 table-responsive">
+          <div class="row col-md-10 table-responsive">
             <table
               id="appointmentTable"
               class="table table-secondary table-striped"
@@ -45,6 +45,7 @@
                   <th>Id</th>
                   <th>Odontólogo</th>
                   <th>Paciente</th>
+                  <th>Fecha y Hora</th>
                   <th></th>
                 </tr>
               </thead>
@@ -79,11 +80,10 @@
                   type="datetime-local"
                   class="form-control"
                   id="fechaHora"
-                  readonly
                 />
               </div>
               <div class="form-group">
-                <label>Id Odontólogo:</label>
+                <label>Odontólogo:</label>
                 <input
                   type="text"
                   class="form-control"
@@ -92,7 +92,7 @@
                 />
               </div>
               <div class="form-group">
-                <label>Id Paciente:</label>
+                <label>Paciente:</label>
                 <input
                   type="text"
                   class="form-control"
