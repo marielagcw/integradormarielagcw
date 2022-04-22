@@ -30,7 +30,7 @@ public class TurnoService implements ITurnoService {
    ────────────── */
 
     // GUARDAR
-    public TurnoDTO save(TurnoDTO turnoDto) {
+    public TurnoDTO saveAndFlush(TurnoDTO turnoDto) {
         odontologoService.findById(turnoDto.getOdontologo().getId());
         pacienteService.findById(turnoDto.getPaciente().getId());
         Turno turnoAGuardar = mapper.convertValue(turnoDto, Turno.class);
@@ -40,7 +40,7 @@ public class TurnoService implements ITurnoService {
                 throw new BadRequestExceptionService("La fecha que intenta ingresar ya fue ocupada");
             }
         }
-        turnoRepository.save(turnoAGuardar);
+        turnoRepository.saveAndFlush(turnoAGuardar);
         return mapper.convertValue(turnoAGuardar, TurnoDTO.class);
     }
     /* ----------------------------------------------------------------------------- */
@@ -73,7 +73,7 @@ public class TurnoService implements ITurnoService {
     // MODIFICAR POR ID
     public void update(TurnoDTO turnoDto) {
         Turno turnoModificar = mapper.convertValue(turnoDto, Turno.class);
-        turnoRepository.save(turnoModificar);
+        turnoRepository.saveAndFlush(turnoModificar);
     }
     /* ----------------------------------------------------------------------------- */
 

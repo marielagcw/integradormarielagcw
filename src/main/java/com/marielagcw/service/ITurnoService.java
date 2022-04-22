@@ -13,7 +13,7 @@ public interface ITurnoService {
      ────────────── */
 
     // GUARDAR
-    TurnoDTO save(TurnoDTO turnoDTO);
+    TurnoDTO saveAndFlush(TurnoDTO turnoDTO);
 
     // BUSCAR TODOS
     List<TurnoDTO> findAll();

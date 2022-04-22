@@ -2,6 +2,8 @@ window.addEventListener("load", function () {
   const formulario = document.querySelector("#add_new_patient");
 
   formulario.addEventListener("submit", function (event) {
+    event.preventDefault();
+
     const formData = {
       dni: document.querySelector("#dni").value,
       apellido: document.querySelector("#apellido").value,
@@ -13,18 +15,26 @@ window.addEventListener("load", function () {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        mode: 'no-cors' 
+        mode: "no-cors",
       },
       body: JSON.stringify(formData),
     };
 
     fetch(url, settings)
       .then((response) => {
-        alert("guardado");
-        resetUploadForm();
-      })
-      .catch((error) => {
-        alert("error");
+        if (response.status == 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Genial!",
+            text: "Los datos fueron guardado con éxito!",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Algo salió mal, intenta de nuevo",
+          });
+        }
         resetUploadForm();
       });
   });

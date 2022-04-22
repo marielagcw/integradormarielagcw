@@ -1,6 +1,5 @@
 package com.marielagcw.controller;
 
-import com.marielagcw.exception.BadRequestExceptionService;
 import com.marielagcw.model.dto.TurnoDTO;
 import com.marielagcw.service.impl.TurnoService;
 import com.marielagcw.util.IValidation;
@@ -29,12 +28,7 @@ public class TurnoController {
     @PostMapping
     public ResponseEntity<String> postTurno(@RequestBody TurnoDTO turnoDTO) {
         if (validationBody.validate(turnoDTO)) {
-            try {
-                service.save(turnoDTO);
-            } catch (BadRequestExceptionService e) {
-                e.printStackTrace();
-                return ResponseEntity.badRequest().body(e.getMessage());
-            }
+            service.saveAndFlush(turnoDTO);
             return ResponseEntity.ok().body("El turno fue guardado con éxito");
         } else return ResponseEntity.badRequest().body("Los datos ingresados son incompletos o incorrectos");
     }

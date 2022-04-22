@@ -29,7 +29,7 @@ public class PacienteController {
     @PostMapping
     public ResponseEntity<String> postPaciente(@RequestBody PacienteDTO pacienteDTO) {
         if (validationBody.validate(pacienteDTO)) {
-            service.save(pacienteDTO);
+            service.saveAndFlush(pacienteDTO);
             return ResponseEntity.ok("El paciente se guardó con éxito");
         } else return ResponseEntity.badRequest().body("El paciente debe tener todos los campos completos");
     }

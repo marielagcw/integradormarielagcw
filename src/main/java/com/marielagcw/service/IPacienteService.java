@@ -13,7 +13,7 @@ public interface IPacienteService {
      ────────────── */
 
     // GUARDAR
-    PacienteDTO save(PacienteDTO pacienteDTO);
+    PacienteDTO saveAndFlush(PacienteDTO pacienteDTO);
 
     // BUSCAR TODOS
     List<PacienteDTO> findAll();

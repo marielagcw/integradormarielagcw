@@ -26,9 +26,9 @@ public class PacienteService implements IPacienteService {
    ────────────── */
 
     // GUARDAR
-    public PacienteDTO save(PacienteDTO pacienteDTO) {
+    public PacienteDTO saveAndFlush(PacienteDTO pacienteDTO) {
         Paciente pacienteAGuardar = mapper.convertValue(pacienteDTO, Paciente.class);
-        pacienteRepository.save(pacienteAGuardar);
+        pacienteRepository.saveAndFlush(pacienteAGuardar);
         return mapper.convertValue(pacienteAGuardar, PacienteDTO.class);
     }
     /* ----------------------------------------------------------------------------- */
@@ -61,7 +61,7 @@ public class PacienteService implements IPacienteService {
     // MODIFICAR POR ID
     public void update(PacienteDTO pacienteDTO) {
         Paciente pacienteModificar = mapper.convertValue(pacienteDTO, Paciente.class);
-        pacienteRepository.save(pacienteModificar);
+        pacienteRepository.saveAndFlush(pacienteModificar);
     }
     /* ----------------------------------------------------------------------------- */
 }

@@ -26,9 +26,9 @@ public class OdontologoService implements IOdontologoService {
    ────────────── */
 
     // GUARDAR
-    public OdontologoDTO save(OdontologoDTO odontologoDTO) {
+    public OdontologoDTO saveAndFlush(OdontologoDTO odontologoDTO) {
         Odontologo odontologoAGuardar = mapper.convertValue(odontologoDTO, Odontologo.class);
-        odontologoRepository.save(odontologoAGuardar);
+        odontologoRepository.saveAndFlush(odontologoAGuardar);
         return mapper.convertValue(odontologoAGuardar, OdontologoDTO.class);
     }
     /* ----------------------------------------------------------------------------- */

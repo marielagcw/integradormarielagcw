@@ -29,7 +29,7 @@ public class OdontologoController {
     @PostMapping
     public ResponseEntity<String> postOdontologo(@RequestBody OdontologoDTO odontologoDTO) {
         if (validateBody.validate(odontologoDTO)) {
-            service.save(odontologoDTO);
+            service.saveAndFlush(odontologoDTO);
             return ResponseEntity.ok().body("El odontólogo fue guardado con éxito");
         } else
             return ResponseEntity.badRequest().body("El odontólogo no pudo ser guardado porque los datos están incompletos");

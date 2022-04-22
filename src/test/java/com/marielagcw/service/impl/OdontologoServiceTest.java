@@ -3,18 +3,17 @@ package com.marielagcw.service.impl;
 import com.marielagcw.exception.NotFoundIdException;
 import com.marielagcw.model.dto.OdontologoDTO;
 import com.marielagcw.service.IOdontologoService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.function.Executable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.MethodName.class)
+@Transactional
 class OdontologoServiceTest {
 
     @Autowired
@@ -28,11 +27,13 @@ class OdontologoServiceTest {
         odontologoDTO1.setApellido("OdontologoApellido1");
 
         // CUANDO
-        odontologoDTO1 = odontologoService.save(odontologoDTO1);
+        odontologoDTO1 = odontologoService.saveAndFlush(odontologoDTO1);
         OdontologoDTO resultadoEsperado1 = odontologoService.findById(odontologoDTO1.getId());
 
         // ENTONCES
-        Assertions.assertTrue(resultadoEsperado1 != null);
+        Assertions.assertNotNull(resultadoEsperado1);
+        Assertions.assertEquals("OdontologoNombre1", resultadoEsperado1.getNombre());
+        Assertions.assertEquals("OdontologoApellido1", resultadoEsperado1.getApellido());
     }
 
     @Test
@@ -41,7 +42,7 @@ class OdontologoServiceTest {
         OdontologoDTO odontologoDTO2 = new OdontologoDTO();
         odontologoDTO2.setNombre("OdontologoNombre2");
         odontologoDTO2.setApellido("OdontologoApellido2");
-        odontologoDTO2 = odontologoService.save(odontologoDTO2);
+        odontologoDTO2 = odontologoService.saveAndFlush(odontologoDTO2);
 
 
         // CUANDO
@@ -58,12 +59,12 @@ class OdontologoServiceTest {
         OdontologoDTO odontologoDTO3 = new OdontologoDTO();
         odontologoDTO3.setNombre("OdontologoNombre3");
         odontologoDTO3.setApellido("OdontologoApellido3");
-        odontologoService.save(odontologoDTO3);
+        odontologoService.saveAndFlush(odontologoDTO3);
 
         OdontologoDTO odontologoDTO4 = new OdontologoDTO();
         odontologoDTO4.setNombre("OdontologoNombre4");
         odontologoDTO4.setApellido("OdontologoApellido4");
-        odontologoService.save(odontologoDTO4);
+        odontologoService.saveAndFlush(odontologoDTO4);
 
         // CUANDO
         List<OdontologoDTO> listaOdontologosEncontrados = odontologoService.findAll();
@@ -79,7 +80,7 @@ class OdontologoServiceTest {
         OdontologoDTO odontologoDTO5 = new OdontologoDTO();
         odontologoDTO5.setNombre("OdontologoNombre5");
         odontologoDTO5.setApellido("OdontologoApellido5");
-        odontologoDTO5 = odontologoService.save(odontologoDTO5);
+        odontologoDTO5 = odontologoService.saveAndFlush(odontologoDTO5);
         Integer idEliminado = odontologoDTO5.getId();
 
         // CUANDO
@@ -95,7 +96,7 @@ class OdontologoServiceTest {
         OdontologoDTO odontologoDTO6 = new OdontologoDTO();
         odontologoDTO6.setNombre("OdontologoNombre6");
         odontologoDTO6.setApellido("OdontologoApellido6");
-        odontologoDTO6 = odontologoService.save(odontologoDTO6);
+        odontologoDTO6 = odontologoService.saveAndFlush(odontologoDTO6);
         odontologoDTO6.setApellido("OtroApellido");
 
 
@@ -104,7 +105,7 @@ class OdontologoServiceTest {
         OdontologoDTO resultadoEsperado4 = odontologoService.findById(odontologoDTO6.getId());
 
         // ENTONCES
-        Assertions.assertTrue(resultadoEsperado4.getApellido().equals(odontologoDTO6.getApellido()));
+        Assertions.assertEquals("OtroApellido", resultadoEsperado4.getApellido());
     }
 
 }

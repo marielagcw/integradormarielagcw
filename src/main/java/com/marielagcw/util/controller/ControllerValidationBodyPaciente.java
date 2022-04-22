@@ -9,10 +9,6 @@ public class ControllerValidationBodyPaciente implements IValidation<PacienteDTO
 
     @Override
     public boolean validate(PacienteDTO pacienteDTO) {
-        boolean validation;
-        if (pacienteDTO.getNombre() != null && pacienteDTO.getApellido() != null && pacienteDTO.getDni() != null) {
-            validation = true;
-        } else validation = false;
-        return validation;
+        return pacienteDTO.getNombre() != null && pacienteDTO.getApellido() != null && pacienteDTO.getDni() != null;
     }
 }

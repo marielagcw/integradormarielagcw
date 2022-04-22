@@ -13,7 +13,7 @@ public interface IOdontologoService {
      ────────────── */
 
     // GUARDAR
-    OdontologoDTO save(OdontologoDTO odontologoDTO);
+    OdontologoDTO saveAndFlush(OdontologoDTO odontologoDTO);
 
     // BUSCAR TODOS
     List<OdontologoDTO> findAll();

@@ -11,11 +11,6 @@ public class ControllerValidationBodyTurno implements IValidation<TurnoDTO> {
 
     @Override
     public boolean validate(TurnoDTO turnoDTO) {
-        boolean validation;
-        if (turnoDTO.getFechaHora() != null && turnoDTO.getFechaHora().isAfter(LocalDateTime.now()) && turnoDTO.getOdontologo().getId() > 0 && turnoDTO.getPaciente().getId() > 0) {
-            validation = true;
-        } else
-            validation = false;
-        return validation;
+        return turnoDTO.getFechaHora() != null && turnoDTO.getFechaHora().isAfter(LocalDateTime.now()) && turnoDTO.getOdontologo().getId() > 0 && turnoDTO.getPaciente().getId() > 0;
     }
 }

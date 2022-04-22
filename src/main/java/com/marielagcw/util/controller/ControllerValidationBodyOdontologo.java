@@ -9,10 +9,6 @@ public class ControllerValidationBodyOdontologo implements IValidation<Odontolog
 
     @Override
     public boolean validate(OdontologoDTO odontologoDTO) {
-        boolean validation;
-        if (odontologoDTO.getNombre() != null && odontologoDTO.getApellido() != null) {
-            validation = true;
-        } else validation = false;
-        return validation;
+        return odontologoDTO.getNombre() != null && odontologoDTO.getApellido() != null && odontologoDTO.getNumeroMatricula() != null;
     }
 }
