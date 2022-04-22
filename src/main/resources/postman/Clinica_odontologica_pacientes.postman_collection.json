@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "2851f9d4-93f0-402b-8c11-3c028c58b63e",
+		"name": "Clinica_odontologica_pacientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post_Pacientes_1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apellido\":\"Desconocido\", \r\n    \"nombre\":\"Eulogia\",\r\n    \"dni\":\"10.002.111\",\r\n    \"fechaDeIngreso\": \"2020-10-25\",\r\n    \"domicilio\":  {\r\n        \"calle\":\"calle1\",\r\n        \"numero\": 500,\r\n        \"localidad\": \"Rosario\",\r\n        \"provincia\": \"SF\"\r\n    },\r\n    \"email\": \"eulogia@msn.com\"\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_Pacientes_2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apellido\": \"Pereyra\", \r\n    \"nombre\":\"Inodoro\",\r\n    \"dni\":\"10.002.000\",\r\n    \"fechaDeIngreso\": \"2020-10-25\",\r\n    \"domicilio\":  {\r\n        \"calle\":\"calle1\",\r\n        \"numero\": 500,\r\n        \"localidad\": \"Rosario\",\r\n        \"provincia\": \"SF\"\r\n    },\r\n    \"email\":\"Pereyra@hotmail.com\"\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_Pacientes_3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apellido\": \"Desconocido\", \r\n    \"nombre\":\"Mendieta\",\r\n    \"dni\":\"10.111.000\",\r\n    \"fechaDeIngreso\": \"2020-10-25\",\r\n    \"domicilio\":  {\r\n        \"calle\":\"calle1\",\r\n        \"numero\": 500,\r\n        \"localidad\": \"Rosario\",\r\n        \"provincia\": \"SF\"\r\n    },\r\n    \"email\": \"desconocido@yahoo.com\"\r\n   }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_Pacientes_todos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_Pacientes_Id_1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_Pacientes_Id_negativo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/-5",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"-5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_Pacientes_Id_inexistente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/100",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put_Pacientes_Id_1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apellido\": \"Rosarina\",\r\n    \"nombre\": \"Eulogia\",\r\n    \"dni\": \"10.002.111\",\r\n    \"fechaDeIngreso\": \"2020-10-25\",\r\n    \"domicilio\": {\r\n        \"calle\": \"calle1\",\r\n        \"numero\": 500,\r\n        \"localidad\": \"Rosario\",\r\n        \"provincia\": \"SF\",\r\n        \"id\":1\r\n    },\r\n    \"email\": \"chirusa@msn.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_Pacientes_Id_3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_Paciente_Id_inexistente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/500",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"500"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "password",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

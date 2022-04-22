@@ -1,0 +1,531 @@
+{
+	"info": {
+		"_postman_id": "c81ab1d4-a008-40e3-b6b6-3d5fb374349c",
+		"name": "Clinica_odontologica_Odontologos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post_Odontologos_1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroMatricula\": 2,\r\n    \"apellido\": \"Chirusi\",\r\n    \"nombre\": \"Susanita\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_Odontologos_2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroMatricula\": 2,\r\n    \"apellido\": \"Chirusi\",\r\n    \"nombre\": \"Susanita\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_Odontologos_3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroMatricula\": 3,\r\n    \"apellido\": \"Goreiro\",\r\n    \"nombre\": \"Manolito\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_Odontologos_4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroMatricula\": 4,\r\n    \"apellido\": \"Desconocido2\",\r\n    \"nombre\": \"Libertad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_Odontologos_Incompleto_nombre",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroMatricula\": 4,\r\n    \"apellido\": \"Desconocido\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_Odontologos_Incompleto_apellido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroMatricula\": 4,\r\n    \"nombre\": \"Mafalda\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_Odontologos_Incompleto_matrícula",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Libertad\",\r\n    \"apellido\": \"Desconocido\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_Odontologos_todos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password2",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "NombreAdmin1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_Odontologos_Id_2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_Odontologos_Id_inexistente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos/100",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put_Odontologos_Id_1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroMatricula\": 1000,\r\n    \"apellido\": \"Quino\",\r\n    \"nombre\": \"Mafalda\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put_Odontologo_Id_negativo",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroMatricula\": 1000,\r\n    \"apellido\": \"Quino\",\r\n    \"nombre\": \"Mafalda\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos/-1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put_Odontologos_Incompleto_nombre",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numeroMatricula\": 1000,\r\n    \"apellido\": \"Quino\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put_Odontologos_Incompleto_matricula",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apellido\": \"Quino\",\r\n    \"nombre\": \"Mafalda\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_Odontologos_Id_3",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos/3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_Odontologos_Id_0",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_Odontologos_Id_inexistente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/odontologos/100",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"odontologos",
+						"100"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "adminPassword",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:8080",
+			"type": "string"
+		},
+		{
+			"value": "",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
